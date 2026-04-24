@@ -9,9 +9,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-const USER_ID = "johndoe_17091999";
-const EMAIL = "john.doe@college.edu";
-const ROLL_NUMBER = "21CS1001";
+const USER_ID = "TisaChoudhary_23012006";
+const EMAIL = "tc7305@srmist.edu.in";
+const ROLL_NUMBER = "RA2311003020465";
 
 app.get("/bfhl", (_req, res) => {
   res.status(200).json({ operation_code: 1 });
@@ -44,7 +44,7 @@ app.post("/bfhl", (req, res) => {
         invalid_entries.push(item);
         continue;
       }
-      
+
       const [parent, child] = trimmed.split("->");
       if (parent === child) {
         invalid_entries.push(item);
@@ -67,7 +67,7 @@ app.post("/bfhl", (req, res) => {
     const adjUndirected = {};
     const adjDirected = {};
     const inDegreeOriginal = {};
-    
+
     validEdges.forEach(({ u, v }) => {
       if (!adjUndirected[u]) adjUndirected[u] = [];
       if (!adjUndirected[v]) adjUndirected[v] = [];
@@ -76,7 +76,7 @@ app.post("/bfhl", (req, res) => {
 
       if (!adjDirected[u]) adjDirected[u] = [];
       adjDirected[u].push(v);
-      
+
       inDegreeOriginal[v] = (inDegreeOriginal[v] || 0) + 1;
       if (inDegreeOriginal[u] === undefined) inDegreeOriginal[u] = 0;
     });
@@ -117,9 +117,9 @@ app.post("/bfhl", (req, res) => {
     });
 
     function hasDirectedCycle(compNodes) {
-      const state = {}; 
+      const state = {};
       compNodes.forEach(n => state[n] = 0);
-      
+
       for (const node of compNodes) {
         if (state[node] === 0) {
           if (dfsCycle(node, state)) return true;
@@ -166,7 +166,7 @@ app.post("/bfhl", (req, res) => {
     for (const compNodes of wccs) {
       const cycleExists = hasDirectedCycle(compNodes);
       const roots = compNodes.filter(n => inDegreeOriginal[n] === 0);
-      
+
       if (cycleExists) {
         total_cycles++;
         roots.sort();
