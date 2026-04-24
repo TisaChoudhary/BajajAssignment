@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+.env
+scratch/
+read_pdf.py
+extracted_text.txt
+SRM - Full Stack Paper.pdf
